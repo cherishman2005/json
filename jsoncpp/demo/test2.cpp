@@ -11,7 +11,8 @@ int main(void) {
     Json::Value arrayObj;
     for (int i=0; i<10; i++)
     {
-        root["array"][i] = i;
+        //root["array"][i] = i;
+        root["array"].append(i);
     }
     
     root["key1"] = "value1";
