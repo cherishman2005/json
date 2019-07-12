@@ -11,19 +11,19 @@ typedef unsigned int uint32_t;
 
 void jsonMapUnmarshal(const std::string & str, std::map<std::string, std::string> & m)
 {
-	Json::Reader jsonReader;
-	Json::Value jsonValue;
-	jsonReader.parse(str, jsonValue);
+    Json::Reader jsonReader;
+    Json::Value jsonValue;
+    jsonReader.parse(str, jsonValue);
 
-	Json::Value::Members members = jsonValue.getMemberNames();
-	for (auto & item : members) 
-	{
-		Json::ValueType vt = jsonValue[item].type();
-		if (Json::stringValue != vt)
-			continue;
+    Json::Value::Members members = jsonValue.getMemberNames();
+    for (auto & item : members) 
+    {
+        Json::ValueType vt = jsonValue[item].type();
+        if (Json::stringValue != vt)
+            continue;
 
-		m.insert(std::pair<std::string, std::string>(item, jsonValue[item].asString()));
-	}
+        m.insert(std::pair<std::string, std::string>(item, jsonValue[item].asString()));
+    }
 }
 
 int main(void)
